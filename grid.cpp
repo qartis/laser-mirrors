@@ -72,16 +72,24 @@ void grid::draw() {
     fl_font(FL_HELVETICA, (Fl_Fontsize)(width * 0.75));
 
     for(i=0;i<DIM;i++){
-        fl_draw(top[i], width + width * i, 0, width, width, FL_ALIGN_CENTER);
+        fl_draw(top[i], width + width * i, 0,
+                        width, width,
+                        FL_ALIGN_CENTER);
     }
     for(i=0;i<DIM;i++){
-        fl_draw(right[i], width * DIM + width, width + width * i, width, width, FL_ALIGN_CENTER);
+        fl_draw(right[i], width * DIM + width, width + width * i,
+                          width, width,
+                          FL_ALIGN_CENTER);
     }
     for(i=0;i<DIM;i++){
-        fl_draw(bot[i], width + width * i, width * DIM + width, width, width, FL_ALIGN_CENTER);
+        fl_draw(bot[i], width + width * i, width * DIM + width,
+                        width, width,
+                        FL_ALIGN_CENTER);
     }
     for(i=0;i<DIM;i++){
-        fl_draw(left[i], 0, width + width * i, width, width, FL_ALIGN_CENTER);
+        fl_draw(left[i], 0, width + width * i,
+                         width, width,
+                         FL_ALIGN_CENTER);
     }
 
     laser_into(0, 0, LEFT, 'A', FL_RED);
@@ -120,19 +128,23 @@ void grid::laser_into(int x, int y, enum dir dir, char letter, Fl_Color color){
     case UNCHECKED:
         switch (dir){
         case TOP:
-            fl_line(width + x * width + width/2, width + width * y, width + x * width + width/2, width + width*y + width);
+            fl_line(width + x * width + width/2, width + width * y,
+                    width + x * width + width/2, width + width*y + width);
             laser_into(x, y+1, TOP, letter, color);
             break;
         case BOT:
-            fl_line(width + x * width + width/2, width + width * y, width + x * width + width/2, width + width*y + width);
+            fl_line(width + x * width + width/2, width + width * y,
+                    width + x * width + width/2, width + width*y + width);
             laser_into(x, y-1, BOT, letter, color);
             break;
         case LEFT:
-            fl_line(width + x * width, width + y * width + width/2, width + x * width + width, width + y * width + width/2);
+            fl_line(width + x * width, width + y * width + width/2,
+                    width + x * width + width, width + y * width + width/2);
             laser_into(x+1, y, LEFT, letter, color);
             break;
         case RIGHT:
-            fl_line(width + x * width, width + y * width + width/2, width + x * width + width, width + y * width + width/2);
+            fl_line(width + x * width, width + y * width + width/2,
+                    width + x * width + width, width + y * width + width/2);
             laser_into(x-1, y, RIGHT, letter, color);
             break;
         }
@@ -140,23 +152,31 @@ void grid::laser_into(int x, int y, enum dir dir, char letter, Fl_Color color){
     case FORSLASH:
         switch (dir){
         case TOP:
-            fl_line(width + x * width + width/2, width + width * y, width + x * width + width/2, width + width*y + width/2);
-            fl_line(width + x * width, width + width * y + width/2, width + x * width + width/2, width + width*y + width/2);
+            fl_line(width + x * width + width/2, width + width * y,
+                    width + x * width + width/2, width + width*y + width/2);
+            fl_line(width + x * width, width + width * y + width/2,
+                    width + x * width + width/2, width + width*y + width/2);
             laser_into(x-1, y, RIGHT, letter, color);
             break;
         case BOT:
-            fl_line(width + x * width + width/2, width + width * y + width, width + x * width + width/2, width + width*y + width/2);
-            fl_line(width + x * width + width, width + width * y + width/2, width + x * width + width/2, width + width*y + width/2);
+            fl_line(width + x * width + width/2, width + width * y + width,
+                    width + x * width + width/2, width + width*y + width/2);
+            fl_line(width + x * width + width, width + width * y + width/2,
+                    width + x * width + width/2, width + width*y + width/2);
             laser_into(x+1, y, LEFT, letter, color);
             break;
         case LEFT:
-            fl_line(width + x * width + width/2, width + width * y, width + x * width + width/2, width + width*y + width/2);
-            fl_line(width + x * width, width + width * y + width/2, width + x * width + width/2, width + width*y + width/2);
+            fl_line(width + x * width + width/2, width + width * y,
+                    width + x * width + width/2, width + width*y + width/2);
+            fl_line(width + x * width, width + width * y + width/2,
+                    width + x * width + width/2, width + width*y + width/2);
             laser_into(x, y-1, BOT, letter, color);
             break;
         case RIGHT:
-            fl_line(width + x * width + width/2, width + width * y + width, width + x * width + width/2, width + width*y + width/2);
-            fl_line(width + x * width + width, width + width * y + width/2, width + x * width + width/2, width + width*y + width/2);
+            fl_line(width + x * width + width/2, width + width * y + width,
+                    width + x * width + width/2, width + width*y + width/2);
+            fl_line(width + x * width + width, width + width * y + width/2,
+                    width + x * width + width/2, width + width*y + width/2);
             laser_into(x, y+1, TOP, letter, color);
             break;
         }
@@ -164,23 +184,31 @@ void grid::laser_into(int x, int y, enum dir dir, char letter, Fl_Color color){
     case BACKSLASH:
         switch(dir){
         case TOP:
-            fl_line(width + x * width + width/2, width + width * y, width + x * width + width/2, width + width*y + width/2);
-            fl_line(width + x * width + width, width + width * y + width/2, width + x * width + width/2, width + width*y + width/2);
+            fl_line(width + x * width + width/2, width + width * y,
+                    width + x * width + width/2, width + width*y + width/2);
+            fl_line(width + x * width + width, width + width * y + width/2,
+                    width + x * width + width/2, width + width*y + width/2);
             laser_into(x+1, y, LEFT, letter, color);
             break;
         case BOT:
-            fl_line(width + x * width + width/2, width + width * y + width, width + x * width + width/2, width + width*y + width/2);
-            fl_line(width + x * width, width + width * y + width/2, width + x * width + width/2, width + width*y + width/2);
+            fl_line(width + x * width + width/2, width + width * y + width,
+                    width + x * width + width/2, width + width*y + width/2);
+            fl_line(width + x * width, width + width * y + width/2,
+                    width + x * width + width/2, width + width*y + width/2);
             laser_into(x-1, y, RIGHT, letter, color);
             break;
         case LEFT:
-            fl_line(width + x * width, width + width * y + width/2, width + x * width + width/2, width + width*y + width/2);
-            fl_line(width + x * width + width/2, width + width * y + width, width + x * width + width/2, width + width*y + width/2);
+            fl_line(width + x * width, width + width * y + width/2,
+                    width + x * width + width/2, width + width*y + width/2);
+            fl_line(width + x * width + width/2, width + width * y + width,
+                    width + x * width + width/2, width + width*y + width/2);
             laser_into(x, y+1, TOP, letter, color);
             break;
         case RIGHT:
-            fl_line(width + x * width + width, width + width * y + width/2, width + x * width + width/2, width + width*y + width/2);
-            fl_line(width + x * width + width/2, width + width * y, width + x * width + width/2, width + width*y + width/2);
+            fl_line(width + x * width + width, width + width * y + width/2,
+                    width + x * width + width/2, width + width*y + width/2);
+            fl_line(width + x * width + width/2, width + width * y,
+                    width + x * width + width/2, width + width*y + width/2);
             laser_into(x, y-1, BOT, letter, color);
             break;
         }
