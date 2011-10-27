@@ -3,8 +3,7 @@
 enum state {
     UNCHECKED,
     FORSLASH,
-    BACKSLASH,
-    NUM_STATES
+    BACKSLASH
 };
 
 enum dir {
