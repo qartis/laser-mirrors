@@ -2,7 +2,7 @@
 #include <FL/Fl_Double_Window.H>
 #include <FL/fl_draw.H>
 
-#include "gui.h"
+#include "grid.h"
 
 const char *top[]   = {"F","B","I","J","E"};
 const char *right[] = {"J","I","H","G","H"};
