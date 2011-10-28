@@ -15,16 +15,17 @@ CFLAGS = $(FLAGS)
 LDFLAGS = $(FLAGS) -lfltk
 CPP = g++
 OBJS = $(patsubst %.cpp,%.o,$(wildcard *.cpp))
+TARGET = laser
 
-all: laser
+all: $(TARGET)
 
 $(OBJS) : $(wildcard *.h) Makefile
 
 %.o : %.cpp
 	$(CPP) -c $(CFLAGS) $< -o $@
 
-laser: $(OBJS)
-	$(CPP) $(LDFLAGS) $(OBJS) -o laser
+$(TARGET): $(OBJS)
+	$(CPP) $(LDFLAGS) $(OBJS) -o $(TARGET)
 
 clean:
-	rm -f laser *.o
+	rm -f $(TARGET) $(OBJS)
